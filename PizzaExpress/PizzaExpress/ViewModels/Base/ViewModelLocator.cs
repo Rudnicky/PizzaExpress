@@ -30,6 +30,7 @@ namespace PizzaExpress.ViewModels.Base
 
             // View models
             builder.RegisterType<MainViewModel>();
+            builder.RegisterType<PizzaToppingViewModel>();
 
             // Services
             builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
