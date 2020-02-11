@@ -1,6 +1,7 @@
-﻿using System;
+﻿using PizzaExpress.Services.Navigation;
+using PizzaExpress.ViewModels.Base;
+using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace PizzaExpress
 {
@@ -9,23 +10,30 @@ namespace PizzaExpress
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
         }
 
-        protected override void OnStart()
+        private Task InitNavigation()
         {
-            // Handle when your app starts
+            var navigationService = ViewModelLocator.Resolve<INavigationService>();
+
+            return navigationService.InitializeAsync();
+        }
+
+        protected async override void OnStart()
+        {
+            base.OnStart();
+
+            await InitNavigation();
+
+            base.OnResume();
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
         }
     }
 }
