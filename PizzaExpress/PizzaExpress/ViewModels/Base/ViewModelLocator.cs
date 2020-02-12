@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using PizzaExpress.Services.Navigation;
+using PizzaExpress.Services.PizzaService;
+using PizzaExpress.Services.RequestProvider;
 using System;
 using System.Globalization;
 using System.Reflection;
@@ -34,6 +36,8 @@ namespace PizzaExpress.ViewModels.Base
 
             // Services
             builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
+            builder.RegisterType<RequestProvider>().As<IRequestProvider>().SingleInstance();
+            builder.RegisterType<PizzaService>().As<IPizzaService>().SingleInstance();
 
             if (_container != null)
             {

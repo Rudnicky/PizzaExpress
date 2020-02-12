@@ -8,18 +8,20 @@ namespace PizzaExpress.Services.RequestProvider
     {
         public async Task<TResult> GetAsync<TResult>(string uri)
         {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(uri);
-
-            if (response != null && response.IsSuccessStatusCode)
+            using (var httpClient = new HttpClient())
             {
-                var serialized = await response.Content.ReadAsStringAsync();
-                if (!string.IsNullOrEmpty(serialized))
+                var response = await httpClient.GetAsync(uri);
+
+                if (response != null && response.IsSuccessStatusCode)
                 {
-                    var result = JsonConvert.DeserializeObject<TResult>(serialized);
-                    if (result != null)
+                    var serialized = await response.Content.ReadAsStringAsync();
+                    if (!string.IsNullOrEmpty(serialized))
                     {
-                        return result;
+                        var result = JsonConvert.DeserializeObject<TResult>(serialized);
+                        if (result != null)
+                        {
+                            return result;
+                        }
                     }
                 }
             }

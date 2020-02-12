@@ -7,5 +7,16 @@
              x:Class="PizzaExpress.App">
     <Application.Resources>
 
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+        
+        <Style x:Key="BodyLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="5,5" />
+        </Style>
+        
     </Application.Resources>
 </Application>
