@@ -19,7 +19,8 @@
                     HorizontalOptions="FillAndExpand"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
                     Text="Most Popular Pizza Topping"
-                    VerticalOptions="End" />
+                    VerticalOptions="End">
+            </Button>
             <ActivityIndicator HeightRequest="40"
                                HorizontalOptions="Center"
                                IsRunning="{Binding IsBusy}"
